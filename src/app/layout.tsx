@@ -24,6 +24,9 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Deep Blue Resources — ROV Exploration & Subsea Engineering",
   description: "95% of the ocean remains unseen. Deep Blue builds the machines to change that. Join a live expedition into the abyss.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
