@@ -48,7 +48,7 @@ export default function Navbar() {
           <div className="absolute top-0 left-0 h-[2px] bg-led-blue animate-progress-fast z-[1001]"></div>
         )}
         
-        <div className="mx-auto flex h-20 max-w-[1280px] items-center px-4 sm:px-8">
+        <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-4 sm:px-8">
           <div className="flex items-center shrink-0">
             <Link href="/" title="Deep Blue Resources Official" className="nav-brand flex items-center gap-2 sm:gap-2.5 no-underline">
               <div className="relative h-7 w-7 sm:h-8 sm:w-8 shrink-0">
@@ -71,7 +71,7 @@ export default function Navbar() {
             </ul>
           </div>
 
-          <div className="flex items-center justify-end gap-3 sm:gap-6 shrink-0">
+          <div className="flex items-center justify-end gap-3 sm:gap-6 shrink-0 max-[1024px]:hidden">
             {loading ? (
               <div className="h-4 w-16 sm:w-20 bg-white/5 animate-pulse rounded"></div>
             ) : user && !isNavigating ? (
