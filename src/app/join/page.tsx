@@ -90,7 +90,7 @@ export default function JoinPage() {
     <div className="min-h-screen bg-abyss flex flex-col overflow-x-hidden">
       <Navbar />
       
-      <main className="min-h-screen flex flex-col items-center justify-center pt-20 px-6 relative">
+      <main className="min-h-[calc(100vh-30px)] flex flex-col items-center justify-center pt-20 px-6 relative">
         {/* Background Ambient Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-led-blue/5 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -107,7 +107,7 @@ export default function JoinPage() {
             </p>
           </div>
 
-          <div className="bg-midnight/40 border border-white/5 p-8 rounded-2xl backdrop-blur-sm">
+          <div className="bg-midnight/40 border border-white/5 p-8 backdrop-blur-sm">
             {message && (
               <div className={`mb-6 p-4 rounded-lg text-sm font-mono ${
                 message.type === 'success' ? 'bg-telemetry/10 text-telemetry border border-telemetry/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'
@@ -128,8 +128,8 @@ export default function JoinPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-telemetry/50 transition-colors font-mono text-[11px] tracking-widest placeholder:text-white/20"
-                    placeholder="name@example.com"
+                    className="w-full bg-black/40 border border-white/10 px-4 py-4 text-white focus:outline-none focus:border-telemetry/50 transition-colors font-mono text-[11px] tracking-widest placeholder:text-white/20 uppercase"
+                    placeholder="EMAIL ADDRESS"
                   />
                 </div>
                 <button
@@ -152,7 +152,7 @@ export default function JoinPage() {
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                     required
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-led-blue/50 transition-colors font-mono text-center text-lg tracking-[0.3em]"
+                    className="w-full bg-black/40 border border-white/10 px-4 py-4 text-white focus:outline-none focus:border-led-blue/50 transition-colors font-mono text-center text-lg tracking-[0.3em]"
                     placeholder="00000000"
                     maxLength={8}
                   />

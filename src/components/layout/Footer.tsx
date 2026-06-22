@@ -125,7 +125,7 @@ export default function Footer() {
               <button 
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className={`absolute right-2 top-1/2 -translate-y-1/2 transition-colors ${
+                className={`absolute right-4 top-1/2 -translate-y-1/2 transition-colors ${
                   status === "success" ? "text-telemetry" : "text-led-blue hover:text-led-bright"
                 }`}
               >
