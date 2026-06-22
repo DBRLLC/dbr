@@ -14,6 +14,16 @@ export default function JoinPage() {
 
   const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!email) return;
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessage({ type: 'error', text: 'Please enter a valid email address.' });
+      return;
+    }
+
     setLoading(true);
     setMessage(null);
 
@@ -77,11 +87,14 @@ export default function JoinPage() {
   };
 
   return (
-    <div className="min-h-screen bg-abyss flex flex-col">
+    <div className="min-h-screen bg-abyss flex flex-col overflow-x-hidden">
       <Navbar />
       
-      <main className="flex-grow flex items-center justify-center pt-32 pb-24 px-6">
-        <div className="w-full max-w-md">
+      <main className="min-h-screen flex flex-col items-center justify-center pt-20 px-6 relative">
+        {/* Background Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-led-blue/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="w-full max-w-md relative z-10 py-12">
           <div className="text-center mb-10">
             <div className="inline-block px-3 py-1 border border-telemetry/30 bg-telemetry/5 rounded-full mb-6">
               <span className="text-[10px] font-mono text-telemetry tracking-[0.2em] uppercase">Expedition Protocol</span>
@@ -110,12 +123,12 @@ export default function JoinPage() {
                     Email Address
                   </label>
                   <input
-                    type="email"
+                    type="text"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-telemetry/50 transition-colors font-body text-sm"
+                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-telemetry/50 transition-colors font-mono text-[11px] tracking-widest placeholder:text-white/20"
                     placeholder="name@example.com"
                   />
                 </div>
@@ -139,7 +152,7 @@ export default function JoinPage() {
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                     required
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-led-blue/50 transition-colors font-mono text-center text-lg tracking-[0.3em]"
+                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-led-blue/50 transition-colors font-mono text-center text-lg tracking-[0.3em]"
                     placeholder="00000000"
                     maxLength={8}
                   />

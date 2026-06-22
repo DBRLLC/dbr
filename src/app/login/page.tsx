@@ -14,6 +14,16 @@ export default function LoginPage() {
 
   const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!email) return;
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessage({ type: 'error', text: 'Please enter a valid email address.' });
+      return;
+    }
+
     setLoading(true);
     setMessage(null);
 
@@ -69,11 +79,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-abyss flex flex-col">
+    <div className="min-h-screen bg-abyss flex flex-col overflow-x-hidden">
       <Navbar />
       
-      <main className="flex-grow flex items-center justify-center pt-32 pb-24 px-6">
-        <div className="w-full max-w-md">
+      <main className="min-h-screen flex flex-col items-center justify-center pt-20 px-6 relative">
+        {/* Background Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-led-blue/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="w-full max-w-md relative z-10 py-12">
           <div className="text-center mb-10">
             <div className="inline-block px-3 py-1 border border-led-blue/30 bg-led-blue/5 rounded-full mb-6">
               <span className="text-[10px] font-mono text-led-blue tracking-[0.2em] uppercase">Expedition Command Center</span>
@@ -102,11 +115,11 @@ export default function LoginPage() {
                     Email Address
                   </label>
                   <input
-                    type="email"
+                    type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-led-blue/50 transition-colors"
+                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-led-blue/50 transition-colors font-mono text-[11px] tracking-widest placeholder:text-white/20"
                     required
                   />
                 </div>
@@ -114,7 +127,7 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full cta-primary flex items-center justify-center gap-2 group disabled:opacity-50"
+                  className="w-full cta-primary !py-4 !text-[11px] flex items-center justify-center gap-2 group disabled:opacity-50"
                 >
                   {loading ? (
                     <span className="animate-pulse">REQUESTING ACCESS...</span>
@@ -137,7 +150,7 @@ export default function LoginPage() {
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                     placeholder="00000000"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white font-mono tracking-[0.3em] text-center focus:outline-none focus:border-led-blue/50 transition-colors"
+                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white font-mono tracking-[0.3em] text-center focus:outline-none focus:border-led-blue/50 transition-colors"
                     required
                     maxLength={8}
                   />

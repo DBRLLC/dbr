@@ -48,32 +48,34 @@ export default function Navbar() {
           <div className="absolute top-0 left-0 h-[2px] bg-led-blue animate-progress-fast z-[1001]"></div>
         )}
         
-        <div className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-8">
-          <div className="flex-1 flex items-center">
-            <Link href="/" className="nav-brand flex shrink-0 items-center gap-2.5 no-underline">
-              <div className="relative h-8 w-8">
+        <div className="mx-auto flex h-20 max-w-[1280px] items-center px-4 sm:px-8">
+          <div className="flex items-center shrink-0">
+            <Link href="/" className="nav-brand flex items-center gap-2 sm:gap-2.5 no-underline">
+              <div className="relative h-7 w-7 sm:h-8 sm:w-8 shrink-0">
                 <div className="absolute inset-0 rounded-full border border-led-blue/30 bg-led-blue/10"></div>
                 <div className="absolute inset-[20%] rounded-full bg-led-blue"></div>
               </div>
-              <span className="nav-brand-text font-heading text-[18px] font-bold tracking-tight text-white uppercase font-syne">
-                Deep Blue Resources
+              <span className="nav-brand-text hidden min-[480px]:inline font-heading text-[15px] sm:text-[18px] font-bold tracking-tight text-white uppercase font-syne whitespace-nowrap ml-2.5">
+                Deep Blue <span className="hidden min-[640px]:inline">Resources</span>
               </span>
             </Link>
           </div>
 
-          <ul className="nav-links m-0 flex list-none items-center gap-6 p-0 max-[1024px]:hidden">
-            <li><Link href="/about" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">About</Link></li>
-            <li><Link href="/technology" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">Technology</Link></li>
-            <li><Link href="/subscriptions" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">Subscriptions</Link></li>
-            <li><Link href="/challenges" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">Challenges</Link></li>
-            <li><Link href="/milestones" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">Milestones</Link></li>
-          </ul>
+          <div className="flex-1 flex items-center justify-center max-[1024px]:hidden px-4">
+            <ul className="nav-links m-0 flex list-none items-center gap-6 p-0 whitespace-nowrap">
+              <li><Link href="#" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">About</Link></li>
+              <li><Link href="#" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">Technology</Link></li>
+              <li><Link href="#" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">Subscriptions</Link></li>
+              <li><Link href="#" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">Challenges</Link></li>
+              <li><Link href="#" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">Milestones</Link></li>
+            </ul>
+          </div>
 
-          <div className="nav-actions flex-1 flex items-center justify-end gap-6 max-[1024px]:hidden">
+          <div className="flex items-center justify-end gap-3 sm:gap-6 shrink-0">
             {loading ? (
-              <div className="h-4 w-20 bg-white/5 animate-pulse rounded"></div>
+              <div className="h-4 w-16 sm:w-20 bg-white/5 animate-pulse rounded"></div>
             ) : user && !isNavigating ? (
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-3 sm:gap-6 max-[1024px]:hidden">
                 <Link href="/dashboard" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">
                   Dashboard
                 </Link>
@@ -85,23 +87,22 @@ export default function Navbar() {
                 </button>
               </div>
             ) : !user && !isNavigating ? (
-              <div className="flex items-center gap-6">
-                <Link href="/login" className="font-mono text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">
+              <div className="flex items-center gap-3 sm:gap-6">
+                <Link href="/login" className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-white/70 no-underline hover:text-telemetry transition-colors">
                   Login
                 </Link>
-                <Link href="/join" className="cta-primary !px-6 !py-2.5 !text-[10px]">
+                <Link href="/join" className="cta-primary hidden min-[540px]:flex !px-6 !py-2.5 !text-[10px] whitespace-nowrap">
                   Join Free
                 </Link>
               </div>
             ) : (
-              /* Keep existing state visible during navigation to prevent flicker */
-              <div className="h-4 w-20 bg-white/5 animate-pulse rounded"></div>
+              <div className="h-4 w-16 sm:w-20 bg-white/5 animate-pulse rounded"></div>
             )}
           </div>
 
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="nav-mobile-toggle hidden cursor-pointer border-none bg-none p-1.5 text-white max-[1024px]:flex" 
+            className="nav-mobile-toggle hidden cursor-pointer border-none bg-none p-1.5 text-white max-[1024px]:flex max-[1024px]:order-3" 
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -117,11 +118,11 @@ export default function Navbar() {
       <div className={`fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={() => setIsMenuOpen(false)}></div>
       <aside className={`fixed top-0 right-0 h-full w-[280px] z-[1000] bg-abyss border-l border-white/5 pt-24 px-8 transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <ul className="flex flex-col gap-8 list-none p-0 m-0">
-          <li><Link href="/about" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">About</Link></li>
-          <li><Link href="/technology" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">Technology</Link></li>
-          <li><Link href="/subscriptions" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">Subscriptions</Link></li>
-          <li><Link href="/challenges" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">Challenges</Link></li>
-          <li><Link href="/milestones" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">Milestones</Link></li>
+          <li><Link href="#" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">About</Link></li>
+          <li><Link href="#" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">Technology</Link></li>
+          <li><Link href="#" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">Subscriptions</Link></li>
+          <li><Link href="#" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">Challenges</Link></li>
+          <li><Link href="#" onClick={() => setIsMenuOpen(false)} className="font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 no-underline hover:text-led-blue block py-2">Milestones</Link></li>
           <li className="pt-4 border-t border-white/5">
             {loading ? (
               <div className="h-4 w-20 bg-white/5 animate-pulse rounded"></div>

@@ -1,6 +1,59 @@
 import Link from "next/link";
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleNewsletterSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatus("error");
+      setMessage("Please enter a valid email.");
+      setTimeout(() => {
+        setStatus("idle");
+        setMessage("");
+      }, 3000);
+      return;
+    }
+
+    setStatus("loading");
+    
+    try {
+      const { error } = await supabase
+        .from("newsletter_subscribers")
+        .insert([{ email }]);
+
+      if (error) {
+        if (error.code === "23505") { // Unique violation
+          setStatus("success");
+          setMessage("You're already on the list!");
+        } else {
+          throw error;
+        }
+      } else {
+        setStatus("success");
+        setMessage("Welcome to the fleet!");
+        setEmail("");
+      }
+    } catch (err: any) {
+      console.error("Newsletter error:", err);
+      setStatus("error");
+      setMessage("Connection failed. Try again.");
+    }
+
+    setTimeout(() => {
+      setStatus("idle");
+      setMessage("");
+    }, 4000);
+  };
+
   return (
     <footer className="site-footer mt-20 border-t border-white/5 bg-abyss">
       <div className="mx-auto max-w-[1280px] px-8 pb-8 pt-[60px]">
@@ -11,8 +64,8 @@ export default function Footer() {
                 <div className="absolute inset-0 rounded-full border border-led-blue/30 bg-led-blue/10"></div>
                 <div className="absolute inset-[20%] rounded-full bg-led-blue"></div>
               </div>
-              <span className="footer-brand-text font-heading text-[16px] font-bold tracking-tight text-white uppercase font-syne">
-                Deep Blue Resources
+              <span className="footer-brand-text font-heading text-[16px] sm:text-[18px] font-bold tracking-tight text-white uppercase font-syne whitespace-nowrap">
+                Deep Blue <span className="hidden min-[420px]:inline">Resources</span>
               </span>
             </Link>
             <p className="footer-brand-tagline font-body text-white/50 text-sm leading-relaxed mb-8">Pioneering sustainable subsea mining for a prosperous future.</p>
@@ -31,36 +84,58 @@ export default function Footer() {
           <div className="footer-col">
             <h4 className="font-heading font-bold text-white uppercase tracking-widest text-sm mb-6">Quick Links</h4>
             <ul className="list-none p-0 space-y-3">
-              <li><Link href="/about" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">About Us</Link></li>
-              <li><Link href="/technology" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Our Technology</Link></li>
-              <li><Link href="/subscriptions" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Subscriptions</Link></li>
-              <li><Link href="/golden-ticket" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Golden Ticket</Link></li>
-              <li><Link href="/newsletter" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Newsletter</Link></li>
-              <li><Link href="/contact" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Contact</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">About Us</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Our Technology</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Subscriptions</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Golden Ticket</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Newsletter</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Contact</Link></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4 className="font-heading font-bold text-white uppercase tracking-widest text-sm mb-6">Legal</h4>
             <ul className="list-none p-0 space-y-3">
-              <li><Link href="/privacy-policy" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms-of-service" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Terms of Service</Link></li>
-              <li><Link href="/disclosure" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Disclosure</Link></li>
-              <li><Link href="/contest-rules" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Challenge Rules</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Privacy Policy</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Terms of Service</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Disclosure</Link></li>
+              <li><Link href="#" className="font-body text-sm text-white/50 hover:text-led-blue transition-colors">Challenge Rules</Link></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4 className="font-heading font-bold text-white uppercase tracking-widest text-sm mb-6">Stay Updated</h4>
             <p className="footer-stay-text font-body text-sm text-white/50 leading-relaxed mb-6">Join our newsletter to get the latest news and offers.</p>
-            <div className="relative group">
+            <form onSubmit={handleNewsletterSignup} className="relative group">
               <input 
-                type="email" 
-                placeholder="EMAIL ADDRESS" 
-                className="w-full bg-white/5 border border-white/10 px-4 py-3 font-mono text-[10px] tracking-widest text-white focus:outline-none focus:border-led-blue/50 transition-colors"
+                type="text" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={status === "success" ? message : "EMAIL ADDRESS"}
+                className={`w-full bg-white/5 border px-4 py-3 font-mono text-[10px] tracking-widest transition-all duration-300 focus:outline-none ${
+                  status === "success" 
+                    ? "border-telemetry/50 text-telemetry placeholder:text-telemetry" 
+                    : status === "error"
+                    ? "border-red-500/50 text-red-400 placeholder:text-red-400"
+                    : "border-white/10 text-white focus:border-led-blue/50"
+                }`}
+                disabled={status === "loading" || status === "success"}
+                required
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 text-led-blue hover:text-led-bright transition-colors">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <button 
+                type="submit"
+                disabled={status === "loading" || status === "success"}
+                className={`absolute right-2 top-1/2 -translate-y-1/2 transition-colors ${
+                  status === "success" ? "text-telemetry" : "text-led-blue hover:text-led-bright"
+                }`}
+              >
+                {status === "loading" ? (
+                  <div className="h-4 w-4 border-2 border-led-blue border-t-transparent rounded-full animate-spin"></div>
+                ) : status === "success" ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                )}
               </button>
-            </div>
+            </form>
           </div>
         </div>
         <div className="footer-bottom border-t border-white/5 pt-8 text-center">
