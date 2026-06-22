@@ -245,7 +245,7 @@ export default function Hero() {
           max-width: 1080px;
           margin: 0 auto;
           padding: 0 40px;
-          padding-top: 120px;
+          padding-top: 70px;
         }
         .hero-eyebrow {
           font-family: var(--font-mono), monospace;
