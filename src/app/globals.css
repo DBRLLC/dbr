@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --black: #000000;
+  --abyss: #020608;
+  --deep: #040c10;
+  --midnight: #070f14;
+  --led-blue: #0a8fd1;
+  --led-bright: #1ab4ff;
+  --ocean-blue: #0d4f6e;
+  --telemetry: #00e87a;
+  --telemetry-dim: #00a855;
+  --telemetry-dark: #004d26;
+  --white: #f4f8fa;
+  --muted: rgba(244, 248, 250, 0.55);
+  --dim: rgba(244, 248, 250, 0.3);
+
+  /* Original Palette */
+  --color-bg: #f5f0e8;
+  --color-surface: #faf7f2;
+  --color-gold: #C9A84C;
+  --color-text: #1a2634;
+}
+
+@theme {
+  --color-abyss: var(--abyss);
+  --color-telemetry: var(--telemetry);
+  --color-telemetry-dim: var(--telemetry-dim);
+  --color-led-blue: var(--led-blue);
+  --font-syne: var(--font-syne);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--abyss);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--abyss);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes nodeRipple {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* ── SHARED COMPONENTS ── */
+.cta-primary {
+  display: inline-block;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black) !important;
+  background: var(--telemetry);
+  padding: 16px 32px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  border: none;
+  cursor: pointer;
+}
+
+.cta-primary:hover {
+  background: #00ffaa;
+  box-shadow: 0 0 30px rgba(0, 232, 122, 0.5);
+  transform: translateY(-1px);
+}
