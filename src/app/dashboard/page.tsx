@@ -46,7 +46,7 @@ export default function DashboardPage() {
       <main className="flex-grow pt-32 pb-24 px-6">
         <div className="max-w-4xl mx-auto">
           <header className="mb-12">
-            <div className="inline-block px-3 py-1 border border-telemetry/30 bg-telemetry/5 rounded-full mb-6">
+            <div className="inline-block px-3 py-1 border border-telemetry/30 bg-telemetry/5 mb-6 status-badge-clipped">
               <span className="text-[10px] font-mono text-telemetry tracking-[0.2em] uppercase">Fleet Status: Active</span>
             </div>
             <h1 className="text-4xl font-syne font-extrabold text-white mb-4 uppercase tracking-tight">
@@ -63,21 +63,21 @@ export default function DashboardPage() {
               { label: 'Subsea Depth', value: '0000m', color: 'text-led-blue' },
               { label: 'Crew Level', value: 'Observer', color: 'text-white' }
             ].map((stat) => (
-              <div key={stat.label} className="bg-midnight/40 border border-white/5 p-6 rounded-2xl">
+              <div key={stat.label} className="bg-midnight/40 border border-white/5 p-6">
                 <p className="text-[9px] font-mono text-white/30 uppercase tracking-widest mb-2">{stat.label}</p>
                 <p className={`text-2xl font-mono font-bold tracking-tight ${stat.color}`}>{stat.value}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-midnight/40 border border-white/5 p-8 rounded-2xl mb-12">
+          <div className="bg-midnight/40 border border-white/5 p-8 mb-12">
             <h2 className="text-sm font-mono text-white/50 uppercase tracking-widest mb-6">Mission Deck</h2>
             <div className="space-y-4">
-              <div className="p-4 bg-black/20 border border-white/5 rounded-lg flex items-center justify-between">
+              <div className="p-4 bg-black/20 border border-white/5 flex items-center justify-between">
                 <span className="text-sm text-white/70">Connect Subscription</span>
                 <span className="text-[10px] font-mono text-yellow-500 uppercase">Pending</span>
               </div>
-              <div className="p-4 bg-black/20 border border-white/5 rounded-lg flex items-center justify-between">
+              <div className="p-4 bg-black/20 border border-white/5 flex items-center justify-between">
                 <span className="text-sm text-white/70">Security Protocol Verification</span>
                 <span className="text-[10px] font-mono text-telemetry uppercase">Verified</span>
               </div>

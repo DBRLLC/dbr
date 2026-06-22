@@ -88,7 +88,7 @@ export default function LoginPage() {
 
         <div className="w-full max-w-md relative z-10 py-12">
           <div className="text-center mb-10">
-            <div className="inline-block px-3 py-1 border border-led-blue/30 bg-led-blue/5 rounded-full mb-6">
+            <div className="inline-block px-3 py-1 border border-led-blue/30 bg-led-blue/5 mb-6 status-badge-clipped">
               <span className="text-[10px] font-mono text-led-blue tracking-[0.2em] uppercase">Expedition Command Center</span>
             </div>
             <h1 className="text-4xl font-syne font-extrabold text-white mb-4 uppercase tracking-tight">
@@ -119,7 +119,7 @@ export default function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="EMAIL ADDRESS"
-                    className="w-full bg-black/40 border border-white/10 px-4 py-4 text-white focus:outline-none focus:border-led-blue/50 transition-colors font-mono text-[11px] tracking-widest placeholder:text-white/20 uppercase"
+                    className="w-full bg-black/40 border border-white/10 px-4 py-4 text-white focus:outline-none focus:border-led-blue/50 transition-colors font-mono text-[11px] tracking-widest placeholder:text-white/20"
                     required
                   />
                 </div>

@@ -112,7 +112,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={status === "success" ? message : "EMAIL ADDRESS"}
-                className={`w-full bg-white/5 border px-4 py-3 font-mono text-[10px] tracking-widest transition-all duration-300 focus:outline-none ${
+                className={`w-full bg-black/40 border px-4 py-4 pr-12 font-mono text-[11px] tracking-widest transition-all duration-300 focus:outline-none ${
                   status === "success" 
                     ? "border-telemetry/50 text-telemetry placeholder:text-telemetry" 
                     : status === "error"

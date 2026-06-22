@@ -103,3 +103,7 @@ a, button {
   box-shadow: 0 0 30px rgba(0, 232, 122, 0.5);
   transform: translateY(-1px);
 }
+
+.status-badge-clipped {
+  /* clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px)); */
+}
