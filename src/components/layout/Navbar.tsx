@@ -50,7 +50,7 @@ export default function Navbar() {
         
         <div className="mx-auto flex h-20 max-w-[1280px] items-center px-4 sm:px-8">
           <div className="flex items-center shrink-0">
-            <Link href="/" title="Deep Blue Resources Home" className="nav-brand flex items-center gap-2 sm:gap-2.5 no-underline">
+            <Link href="/" title="Deep Blue Resources Official" className="nav-brand flex items-center gap-2 sm:gap-2.5 no-underline">
               <div className="relative h-7 w-7 sm:h-8 sm:w-8 shrink-0">
                 <div className="absolute inset-0 rounded-full border border-led-blue/30 bg-led-blue/10"></div>
                 <div className="absolute inset-[20%] rounded-full bg-led-blue"></div>
