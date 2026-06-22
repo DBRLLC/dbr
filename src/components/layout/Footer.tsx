@@ -12,7 +12,7 @@ export default function Footer() {
                 <div className="absolute inset-[20%] rounded-full bg-led-blue"></div>
               </div>
               <span className="footer-brand-text font-heading text-[16px] font-bold tracking-tight text-white uppercase font-syne">
-                Deep Blue
+                Deep Blue Resources
               </span>
             </Link>
             <p className="footer-brand-tagline font-body text-white/50 text-sm leading-relaxed mb-8">Pioneering sustainable subsea mining for a prosperous future.</p>

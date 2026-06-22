@@ -90,7 +90,7 @@ export default function JoinPage() {
               Join the <span className="text-led-blue">Fleet</span>
             </h1>
             <p className="text-muted text-sm font-light">
-              Enter your credentials to access the Deep Blue mission deck.
+              Enter your credentials to access the Deep Blue Resources mission deck.
             </p>
           </div>
 

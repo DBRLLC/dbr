@@ -8,7 +8,7 @@ export default function SubscriptionsPage() {
       name: "Observer",
       price: "Free",
       period: "",
-      description: "Basic access to the Deep Blue expedition archives and community updates.",
+      description: "Basic access to the Deep Blue Resources expedition archives and community updates.",
       features: [
         "Access to mission logs (24h delay)",
         "Standard community forum access",
@@ -55,7 +55,7 @@ export default function SubscriptionsPage() {
       name: "Commander",
       price: "$199",
       period: "/mo",
-      description: "The ultimate level of influence and access to the Deep Blue fleet operations.",
+      description: "The ultimate level of influence and access to the Deep Blue Resources fleet operations.",
       features: [
         "All Captain level features",
         "1-on-1 with mission directors",

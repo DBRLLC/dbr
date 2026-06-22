@@ -56,7 +56,7 @@ export default function Navbar() {
                 <div className="absolute inset-[20%] rounded-full bg-led-blue"></div>
               </div>
               <span className="nav-brand-text font-heading text-[18px] font-bold tracking-tight text-white uppercase font-syne">
-                Deep Blue
+                Deep Blue Resources
               </span>
             </Link>
           </div>

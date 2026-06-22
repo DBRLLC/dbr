@@ -40,7 +40,7 @@ export default function LandingContent() {
           <div className="machines-grid">
             <div className="machines-copy reveal">
               <h2>Built to Endure. Engineered to Explore.</h2>
-              <p>We don&apos;t buy off-the-shelf equipment. Deep Blue designs, fabricates, and deploys our own fleet of state-of-the-art ROVs and autonomous subsea drones. Built to withstand crushing pressures that would flatten steel, our tech is the lens through which humanity will finally witness the abyssal plains.</p>
+              <p>We don&apos;t buy off-the-shelf equipment. Deep Blue Resources designs, fabricates, and deploys our own fleet of state-of-the-art ROVs and autonomous subsea drones. Built to withstand crushing pressures that would flatten steel, our tech is the lens through which humanity will finally witness the abyssal plains.</p>
             </div>
 
             <div className="machines-visual reveal" role="img" aria-label="ROV fleet under stadium lights">
@@ -79,7 +79,7 @@ export default function LandingContent() {
           </div>
 
           <div className="pipeline-header reveal">
-            <h2>The Deep Blue Development Pipeline</h2>
+            <h2>The Deep Blue Resources Development Pipeline</h2>
           </div>
 
           <div className="pipeline-phases">
@@ -126,7 +126,7 @@ export default function LandingContent() {
 
           <div className="experience-copy">
             <h2 className="reveal">Stop Watching from the Surface.</h2>
-            <p className="reveal">This isn&apos;t a documentary. This is a live, high-stakes expedition into a world that is just now starting to be explored. As a passenger on Deep Blue missions, you aren&apos;t a tourist — you are part of the crew, operating alongside our engineers as our drones capture the unknown in real-time.</p>
+            <p className="reveal">This isn&apos;t a documentary. This is a live, high-stakes expedition into a world that is just now starting to be explored. As a passenger on Deep Blue Resources missions, you aren&apos;t a tourist — you are part of the crew, operating alongside our engineers as our drones capture the unknown in real-time.</p>
           </div>
         </div>
       </section>
