@@ -152,5 +152,4 @@ export default function Navbar() {
       </aside>
     </>
   );
-  );
 }
